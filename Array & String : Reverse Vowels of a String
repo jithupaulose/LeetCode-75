@@ -1,0 +1,75 @@
+https://leetcode.com/problems/reverse-vowels-of-a-string/?envType=study-plan-v2&envId=leetcode-75
+
+
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        wovels = 'aeiouAEIOU'
+        s = list(s)
+        i, j = 0, len(s) - 1
+
+        while i < j:
+            if s[i] in wovels and s[j] in wovels:
+                s[i], s[j] = s[j], s[i]
+                i +=1
+                j-=1
+            if s[i] not in wovels:
+                i +=1
+            if s[j] not in wovels:
+                j -=1
+        return ''.join(s)          
+
+
+
+This problem can be solved using two pointers. Initialize one pointer at the start of the string and another at the end of the string. Then, iterate towards the center of the string. If both pointers point to a vowel, swap these two characters. If not, move the pointers accordingly until they both point to a vowel.
+
+
+This problem can be solved using two pointers. Initialize one pointer at the start of the string and another at the end of the string. Then, iterate towards the center of the string. If both pointers point to a vowel, swap these two characters. If not, move the pointers accordingly until they both point to a vowel.
+
+Python Code:
+
+python
+Copy code
+def reverseVowels(s):
+    vowels = 'aeiouAEIOU'
+    s = list(s)
+    i, j = 0, len(s) - 1
+    while i < j:
+        if s[i] in vowels and s[j] in vowels:
+            s[i], s[j] = s[j], s[i]
+            i += 1
+            j -= 1
+        if s[i] not in vowels:
+            i += 1
+        if s[j] not in vowels:
+            j -= 1
+    return ''.join(s)
+In this solution:
+
+We first convert the input string to a list of characters because strings are immutable in Python.
+
+We then initialize two pointers, i at the start of the string and j at the end of the string.
+
+We enter a while loop that continues until the two pointers meet in the middle.
+
+Inside the loop, if the characters at both pointers are vowels, we swap them and move both pointers towards the center.
+
+If the character at i is not a vowel, we move this pointer towards the end.
+
+If the character at j is not a vowel, we move this pointer towards the start.
+
+Finally, we join the list of characters back into a string and return it.
+
+The time complexity of this solution is O(n), where n is the length of the string, because we are iterating through the string once. The space complexity is also O(n), because we are creating a list of characters from the string.
+
+Possible Interview Questions:
+
+What is the time and space complexity of your solution?
+How would your solution handle it if the string were empty or consisted only of vowels or consonants?
+Could there be a more efficient solution if the string were extremely long?
+What would happen if the string contained non-alphabet characters?
+Possible Answers:
+
+The time complexity is O(n), where n is the length of the string, because we are iterating through the string once. The space complexity is also O(n), because we are creating a list of characters from the string.
+If the string were empty, the function would return an empty string. If it consisted only of vowels, it would return the reverse of the string. If it consisted only of consonants, it would return the string as is.
+This solution is already efficient for long strings, as it only requires a single pass through the string. However, if the string were extremely long, it could be split into smaller chunks, and the function could be applied to each chunk in parallel.
+Non-alphabet characters would be treated as consonants and left in their original positions.
