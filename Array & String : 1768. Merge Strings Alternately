@@ -12,3 +12,35 @@ class Solution:
                 res.append(word2[j])
                 j+=1
         return ''.join(res)
+
+
+This problem can be solved by using a two-pointer technique. Each pointer will represent the current position 
+in word1 and word2 respectively. We will create a new string by alternatingly adding characters 
+from word1 and word2. If one word ends before the other, we will add the rest of the other word to the new string.
+
+Let's break down the steps in this code:
+
+We initialize three variables: i and j represent the current position in word1 and word2 respectively, and res is an empty list to store the merged string.
+
+The while loop continues as long as there are unprocessed characters in word1 or word2.
+
+Inside the while loop, we first check if there are any unprocessed characters in word1. If so, we add the current character to the res list and increment i.
+
+Similarly, we then check if there are any unprocessed characters in word2. If so, we add the current character to the res list and increment j.
+
+After the loop finishes, we join the characters in the res list into a string and return it.
+
+
+What is the time and space complexity of your solution?
+The time complexity of this solution is O(n), where n is the total length of word1 and word2. This is because we traverse each string once. The space complexity is also O(n) because we are storing the merged string, which could potentially be as large as the combined length of the two input strings.
+
+What would happen if one or both of the input strings were empty?
+If one of the input strings is empty, the function would simply return the other string, as there are no characters to alternate from the empty string. If both strings are empty, an empty string would be returned. This is because the condition to enter the while loop is that there are unprocessed characters in either of the strings, which is not the case when both are empty.
+
+How would your solution handle strings with non-alphabetic characters?
+The solution would handle non-alphabetic characters in the same way as alphabetic characters. It treats each character of the string the same regardless of whether it's a letter, number, special character, or even a whitespace.
+
+Could there be a more efficient solution if we are allowed to modify the original strings?
+The solution provided does not modify the original strings, and it's hard to imagine a more efficient solution that would involve modifying the original strings. This is because the task requires iterating through both strings at least once, which already has a time complexity of O(n), and it's unlikely that modifying the original strings would reduce this complexity.
+
+
