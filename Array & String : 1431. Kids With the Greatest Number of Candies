@@ -1,0 +1,32 @@
+https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description/?envType=study-plan-v2&envId=leetcode-75
+
+
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        max_candies = max(candies)
+        result = [candy + extraCandies >= max_candies for candy in candies]
+        return result
+
+
+This solution is straightforward:
+
+We first find the maximum number of candies that any kid currently has, which is max_candies.
+
+Then, for each kid, we check if the number of candies that kid has plus the extra candies is greater than or equal to max_candies.
+
+If it is, that means after giving all extra candies to that kid, he/she will have the most candies or equal to the most candies, so we return True for that kid. Otherwise, we return False.
+
+The time complexity of this solution is O(n), where n is the number of kids (i.e., the length of the candies array), because we have to check each kid. The space complexity is also O(n) because we return a list of booleans that has the same length as the candies array.
+
+Now, let's consider possible questions that an interviewer might ask about this solution and the problem:
+
+What is the time and space complexity of your solution?
+How would your solution handle it if there were an extremely large number of kids or an extremely large number of extra candies? Could it still run efficiently?
+Could there be a more efficient solution if we know that the number of candies each kid has is limited to a certain range?
+What would happen if the candies array were empty?
+The answers to these questions would be:
+
+The time complexity of this solution is O(n), where n is the number of kids. The space complexity is also O(n) because we return a list of booleans that has the same length as the candies array.
+This solution would still work efficiently even if there were a very large number of kids or a very large number of extra candies. The number of operations would increase linearly with the number of kids, and the number of extra candies doesn't affect the time complexity.
+Even if we know that the number of candies each kid has is limited to a certain range, the time complexity would still be O(n) because we still need to check each kid.
+If the candies array were empty, this function would return an empty list, because there are no kids to check.
