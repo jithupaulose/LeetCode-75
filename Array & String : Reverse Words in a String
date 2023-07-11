@@ -1,0 +1,48 @@
+https://leetcode.com/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&envId=leetcode-75
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        return ' '.join(s.strip().split()[::-1])
+
+
+
+Strip the string s of leading and trailing spaces.
+Split the string into words separated by space.
+Reverse the list of words.
+Join the words back into a string, separated by space.
+
+
+
+The problem can be solved by following these steps:
+
+Strip the string s of leading and trailing spaces.
+Split the string into words separated by space.
+Reverse the list of words.
+Join the words back into a string, separated by space.
+Here is the Python code for these steps:
+
+python
+Copy code
+def reverseWords(s):
+    return ' '.join(s.strip().split()[::-1])
+Let's go through a few possible interview questions and answers:
+
+Question 1: What's the time complexity of your solution?
+
+Answer 1: The time complexity is O(n), where n is the length of the string s. This is because we're doing a single pass over the string to split it into words, a single pass to reverse the words, and a single pass to join them back into a string.
+
+Question 2: Could you reduce the space complexity if you could modify the input string?
+
+Answer 2: No, because Python strings are immutable. This means we cannot modify the input string in-place, so we would still need to create a new string to store the reversed words.
+
+Question 3: How would your solution handle it if the string was empty or consisted only of spaces?
+
+Answer 3: If the string was empty, the strip() method would return an empty string, split() would return an empty list, and join() would return an empty string. If the string consisted only of spaces, the strip() method would remove all spaces, so the result would be the same.
+
+Question 4: What would happen if the string contained non-alphabetic characters?
+
+Answer 4: Non-alphabetic characters would be treated as part of the words they are in. They would be moved with their words when the order of the words is reversed. For instance, if the input string was "a1 b2 c3", the output would be "c3 b2 a1".
+
+Question 5: Could your solution be adapted to reverse the order of the words while preserving the original order of the characters in each word?
+
+Answer 5: The solution already preserves the original order of the characters in each word while reversing the order of the words. If the input string was "the sky is blue", the output would be "blue is sky the", not "eulb si yks eht".
