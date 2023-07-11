@@ -1,0 +1,53 @@
+https://leetcode.com/problems/greatest-common-divisor-of-strings/description/?envType=study-plan-v2&envId=leetcode-75
+
+
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        len1 = len(str1)
+        len2 = len(str2)
+
+        def gcd(a,b):
+            if b == 0:
+                return a
+            else:
+                return gcd(b,a%b)
+        
+        gcd_length = gcd(len1,len2)
+        gcd_string = str1[:gcd_length]
+
+
+        if gcd_string * (len1//gcd_length) == str1 and gcd_string * (len2//gcd_length) == str2:
+            return gcd_string
+        else:
+            return ''
+
+
+
+We first calculate the lengths of str1 and str2.
+
+We define a helper function gcd(a, b) to calculate the greatest common divisor of two numbers using Euclid's algorithm.
+
+We use this gcd function to find the greatest common divisor of the lengths of str1 and str2.
+
+We take the first gcd_length characters of str1 as the potential gcd_str.
+
+We check if gcd_str can construct both str1 and str2 by repeating it len1 // gcd_length times and len2 // gcd_length times, respectively.
+
+If the checks pass, we return gcd_str. Otherwise, we return an empty string.
+
+The time complexity of this solution is O(n), where n is the sum of the lengths of str1 and str2. The space complexity is O(gcd_length), where gcd_length is the length of the common divisor string.
+
+The interviewer might ask the following questions:
+
+What is the time and space complexity of this solution?
+How does this solution compare with the recursive one?
+How would your solution handle it if str1 and str2 were extremely large? Could it still run efficiently?
+What would happen if one or both of the input strings were empty?
+Could this solution be adapted to handle lowercase letters or non-alphabetic characters?
+And the answers would be:
+
+The time complexity of this solution is O(n), where n is the sum of the lengths of str1 and str2. The space complexity is O(gcd_length), where gcd_length is the length of the common divisor string.
+This solution uses iterative computation rather than recursive, which makes it more space-efficient because it doesn't use the call stack like the recursive solution. It also directly checks if the common string can construct both strings, making it easier to understand.
+This solution would still work if str1 and str2 were extremely large, but the time it takes to run would increase proportionally with the size of the inputs.
+If both strings were empty, the function would return an empty string as the GCD of two empty strings is an empty string. If only one string was empty, the function would return the empty string as well because an empty string can be considered a divisor of any string.
+This solution could be easily adapted to handle lowercase letters or non-alphabetic characters by simply not changing the logic. As long as the characters in the strings match, the function does not care about their case or whether they are alphabetic.
