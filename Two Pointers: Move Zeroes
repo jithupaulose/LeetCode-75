@@ -9,3 +9,25 @@ class Solution:
                 nums[i], nums[j] = nums[j], nums[i]
                 i+=1
         return nums
+
+
+Steps:
+
+The "slow" pointer, i, starts from the beginning of the array and points to the next location where the next non-zero element should be moved to.
+The "fast" pointer, j, starts from the beginning of the array and explores each element one by one.
+If the element at j is not zero, then we swap the elements at i and j, and then increment i.
+If the element at j is zero, then we don't do anything and just increment j.
+Repeat steps 3-4 until j has explored all the elements.
+
+
+Edge Cases:
+
+Empty array: The algorithm can handle an empty array as it does not rely on the presence of an element. It would simply return the empty array.
+Array with all elements as zero: The slow pointer will not move and all elements will remain as is.
+Array with no zeros: The slow pointer will move with the fast pointer, swapping each element with itself. So, there won't be any changes in the array.
+Time Complexity:
+
+The time complexity of this solution is O(n), where n is the number of elements in the array. This is because we are scanning the entire array once.
+Space Complexity:
+
+The space complexity is O(1), because we are not using any extra space that scales with the input size. We are modifying the array in-place.
